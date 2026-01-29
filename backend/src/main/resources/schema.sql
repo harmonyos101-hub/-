@@ -1,0 +1,90 @@
+CREATE TABLE IF NOT EXISTS mh_user (
+  id BIGINT PRIMARY KEY,
+  name VARCHAR(64) NOT NULL,
+  email VARCHAR(128),
+  phone VARCHAR(32),
+  role VARCHAR(32) NOT NULL,
+  status VARCHAR(32) NOT NULL,
+  created_at DATETIME NOT NULL,
+  updated_at DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS mh_counselor (
+  id BIGINT PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  credential VARCHAR(64) NOT NULL,
+  specialty VARCHAR(128),
+  available TINYINT(1) NOT NULL,
+  price_per_session DECIMAL(10, 2) NOT NULL,
+  created_at DATETIME NOT NULL,
+  updated_at DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS mh_appointment (
+  id BIGINT PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  counselor_id BIGINT NOT NULL,
+  start_time DATETIME NOT NULL,
+  channel VARCHAR(32) NOT NULL,
+  status VARCHAR(32) NOT NULL,
+  created_at DATETIME NOT NULL,
+  updated_at DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS mh_assessment (
+  id BIGINT PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  scale VARCHAR(64) NOT NULL,
+  score INT NOT NULL,
+  level VARCHAR(32) NOT NULL,
+  summary VARCHAR(255),
+  created_at DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS mh_article (
+  id BIGINT PRIMARY KEY,
+  title VARCHAR(128) NOT NULL,
+  category VARCHAR(64) NOT NULL,
+  content TEXT,
+  view_count INT NOT NULL,
+  published TINYINT(1) NOT NULL,
+  created_at DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS mh_community_post (
+  id BIGINT PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  topic VARCHAR(128) NOT NULL,
+  content TEXT,
+  anonymous TINYINT(1) NOT NULL,
+  status VARCHAR(32) NOT NULL,
+  created_at DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS mh_ai_chat_log (
+  id BIGINT PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  message TEXT NOT NULL,
+  reply TEXT NOT NULL,
+  crisis_flag TINYINT(1) NOT NULL,
+  created_at DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS mh_emotion_record (
+  id BIGINT PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  calm_score DOUBLE NOT NULL,
+  anxious_score DOUBLE NOT NULL,
+  sad_score DOUBLE NOT NULL,
+  summary VARCHAR(255),
+  created_at DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS mh_trend_record (
+  id BIGINT PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  stress_score INT NOT NULL,
+  mood_score INT NOT NULL,
+  risk_level VARCHAR(32) NOT NULL,
+  record_date DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
