@@ -65,7 +65,9 @@ spring:
 2. 选择 **File → Open**。
 3. 选择项目目录 `/workspace/-/backend`。
 4. IDEA 会自动识别 Maven 项目，点击 **Load Maven Project**。
-5. 等待依赖下载完成。
+5. 在 **File → Project Structure → Project** 中将 **Project SDK** 设置为 **JDK 17**。
+6. 在 **Settings → Build, Execution, Deployment → Build Tools → Maven** 中将 **JDK for importer** 设为 **JDK 17**。
+7. 等待依赖下载完成。
 
 ### 3.2 运行后端服务
 
@@ -156,6 +158,12 @@ http://localhost:5173
   ```bash
   npm config set registry https://registry.npmmirror.com
   ```
+
+### 6.4 启动时报 `java.lang.ExceptionInInitializerError`
+
+- 确认 **Project SDK** 与 **Maven Importer JDK** 均为 **JDK 17**。
+- 重新导入 Maven 项目后再运行。
+- 如果使用自定义 JDK 安装路径，请在 IDEA 的 **SDKs** 中重新添加并指向 JDK 17 目录。
 
 ## 7. 推荐下一步（可选）
 
