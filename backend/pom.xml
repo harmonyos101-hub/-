@@ -13,7 +13,7 @@
   <name>mental-health</name>
   <description>Smart mental health platform</description>
   <properties>
-    <java.version>17</java.version>
+    <java.version>25</java.version>
   </properties>
   <dependencies>
     <dependency>

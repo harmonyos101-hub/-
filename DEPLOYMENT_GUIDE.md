@@ -8,7 +8,7 @@
 
 | 组件 | 版本要求 | 说明 |
 | --- | --- | --- |
-| JDK | 17 | Spring Boot 3.x 推荐 |
+| JDK | 25 | Spring Boot 3.x 推荐 |
 | Maven | 3.8+ | 后端构建与依赖管理 |
 | MySQL | 8.0 | 主数据库 |
 | Node.js | 18+ | 前端构建与运行（Vite） |
@@ -65,8 +65,8 @@ spring:
 2. 选择 **File → Open**。
 3. 选择项目目录 `/workspace/-/backend`。
 4. IDEA 会自动识别 Maven 项目，点击 **Load Maven Project**。
-5. 在 **File → Project Structure → Project** 中将 **Project SDK** 设置为 **JDK 17**。
-6. 在 **Settings → Build, Execution, Deployment → Build Tools → Maven** 中将 **JDK for importer** 设为 **JDK 17**。
+5. 在 **File → Project Structure → Project** 中将 **Project SDK** 设置为 **JDK 25**。
+6. 在 **Settings → Build, Execution, Deployment → Build Tools → Maven** 中将 **JDK for importer** 设为 **JDK 25**。
 7. 等待依赖下载完成。
 
 ### 3.2 运行后端服务
@@ -161,9 +161,9 @@ http://localhost:5173
 
 ### 6.4 启动时报 `java.lang.ExceptionInInitializerError`
 
-- 确认 **Project SDK** 与 **Maven Importer JDK** 均为 **JDK 17**。
+- 确认 **Project SDK** 与 **Maven Importer JDK** 均为 **JDK 25**。
 - 重新导入 Maven 项目后再运行。
-- 如果使用自定义 JDK 安装路径，请在 IDEA 的 **SDKs** 中重新添加并指向 JDK 17 目录。
+- 如果使用自定义 JDK 安装路径，请在 IDEA 的 **SDKs** 中重新添加并指向 JDK 25 目录。
 
 ## 7. 推荐下一步（可选）
 
