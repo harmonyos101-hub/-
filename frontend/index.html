@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>台球厅管理系统</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="tag">Billiards Hall Manager</p>
+        <h1>台球厅管理系统</h1>
+        <p>覆盖会员、桌位、预定、账单、活动与运营报表的统一管理平台。</p>
+        <div class="hero-actions">
+          <button id="refreshSummary" class="primary">刷新经营概览</button>
+          <button id="loadTables">加载桌位状态</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h2>营业时间</h2>
+        <p id="businessHours">载入中…</p>
+        <div class="stat-grid">
+          <div>
+            <span>总收入</span>
+            <strong id="totalRevenue">—</strong>
+          </div>
+          <div>
+            <span>总预定</span>
+            <strong id="totalReservations">—</strong>
+          </div>
+          <div>
+            <span>可用桌位</span>
+            <strong id="activeTables">—</strong>
+          </div>
+          <div>
+            <span>活跃会员</span>
+            <strong id="activeMembers">—</strong>
+          </div>
+        </div>
+        <p class="muted">高峰时段：<span id="busyHours">—</span></p>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <h2>业务模块</h2>
+        <div class="grid">
+          <article>
+            <h3>用户与会员</h3>
+            <p>快速登记顾客信息、会员等级、积分变更与历史消费记录。</p>
+            <button data-modal="userModal">新建顾客</button>
+          </article>
+          <article>
+            <h3>台球桌管理</h3>
+            <p>实时掌握桌位空闲、预定、维修状态，支持自动调度。</p>
+            <button data-modal="tableModal">新增桌位</button>
+          </article>
+          <article>
+            <h3>预定与支付</h3>
+            <p>支持在线预定、支付确认、变更取消与提醒通知。</p>
+            <button data-modal="reservationModal">创建预定</button>
+          </article>
+          <article>
+            <h3>账单与报表</h3>
+            <p>自动生成账单、应用优惠券并输出经营分析。</p>
+            <button data-modal="billModal">生成账单</button>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>桌位状态</h2>
+        <div id="tableList" class="table-list">暂无数据</div>
+      </section>
+
+      <section>
+        <h2>系统支持</h2>
+        <div class="grid small">
+          <article>
+            <h3>活动与优惠</h3>
+            <p>创建优惠券与会员积分活动，提升客户复购。</p>
+          </article>
+          <article>
+            <h3>客户反馈</h3>
+            <p>记录投诉与建议，安排专人处理并追踪。</p>
+          </article>
+          <article>
+            <h3>员工排班</h3>
+            <p>合理安排班次，确保高峰期服务能力。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="userModal" class="modal">
+      <form method="dialog" id="userForm">
+        <h3>新建顾客</h3>
+        <label>姓名<input name="name" required /></label>
+        <label>手机号<input name="phone" required /></label>
+        <label>邮箱<input name="email" type="email" /></label>
+        <menu>
+          <button value="cancel">取消</button>
+          <button class="primary" value="confirm">提交</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="tableModal" class="modal">
+      <form method="dialog" id="tableForm">
+        <h3>新增桌位</h3>
+        <label>编号<input name="label" required /></label>
+        <label>类型<input name="table_type" /></label>
+        <label>尺寸<input name="size" /></label>
+        <label>每小时费用<input name="hourly_rate" type="number" min="0" step="0.1" /></label>
+        <menu>
+          <button value="cancel">取消</button>
+          <button class="primary" value="confirm">提交</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="reservationModal" class="modal">
+      <form method="dialog" id="reservationForm">
+        <h3>创建预定</h3>
+        <label>顾客 ID<input name="user_id" type="number" required /></label>
+        <label>桌位 ID<input name="table_id" type="number" required /></label>
+        <label>开始时间<input name="start_time" type="datetime-local" required /></label>
+        <label>结束时间<input name="end_time" type="datetime-local" required /></label>
+        <menu>
+          <button value="cancel">取消</button>
+          <button class="primary" value="confirm">提交</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="billModal" class="modal">
+      <form method="dialog" id="billForm">
+        <h3>生成账单</h3>
+        <label>预定 ID<input name="reservation_id" type="number" required /></label>
+        <label>原价<input name="total_amount" type="number" min="0" step="0.1" required /></label>
+        <label>折扣<input name="discount_amount" type="number" min="0" step="0.1" /></label>
+        <label>实收<input name="final_amount" type="number" min="0" step="0.1" required /></label>
+        <menu>
+          <button value="cancel">取消</button>
+          <button class="primary" value="confirm">提交</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
