@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>台球厅管理系统</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>台球厅管理系统</h1>
+        <p>预约、桌台、账单与运营报表一体化控制台</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>快速操作</h2>
+            <div class="grid">
+                <button onclick="loadCustomers()">查看顾客</button>
+                <button onclick="loadTables()">查看桌台</button>
+                <button onclick="loadReservations()">查看预定</button>
+                <button onclick="loadSummary()">经营概览</button>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>数据输出</h2>
+            <pre id="output">点击上方按钮以查看数据。</pre>
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by Spring Boot + MySQL</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
